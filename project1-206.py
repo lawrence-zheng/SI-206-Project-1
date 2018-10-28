@@ -6,17 +6,32 @@ from datetime import date
 
 def getData(file):
 # get a list of dictionary objects from the file
-#Input: file name
-#Ouput: return a list of dictionary objects where
-#the keys are from the first row in the data. and the values are each of the other rows
+# Input: file name
+# Output: return a list of dictionary objects where
+# the keys are from the first row in the data. and the values are each of the other rows
+	input_file = open(file, "r")
+	output = []
 
-	pass
+	headings = input_file.readline().split(",")
+	num_columns = len(headings)
+	line = input_file.readline()
+
+	while line:
+		row_dict = {}
+		row = line.split(",")
+		for i in range(num_columns):
+			row_dict[headings[i]] = row[i] 
+		output.append(row_dict)
+		line = input_file.readline()
+
+	return output
+
 
 def mySort(data,col):
 # Sort based on key/column
 #Input: list of dictionaries and col (key) to sort on
 #Output: Return the first item in the sorted list as a string of just: firstName lastName
-
+	
 	pass
 
 
