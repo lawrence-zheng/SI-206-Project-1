@@ -60,7 +60,6 @@ def findMonth(a):
 	month_dict = {}
 	for row in a:
 		date = row.get("DOB")
-		print("hi " + str(date))
 		# Assumes m/d/y date format
 		month = date.split("/")[0]
 
@@ -69,7 +68,8 @@ def findMonth(a):
 		else:
 			month_dict[month] = 1
 
-	return max(month_dict, key=month.dict.get())
+	return int(max(month_dict, key=month_dict.get))
+	
 
 def mySortPrint(a,col,fileName):
 #Similar to mySort, but instead of returning single
