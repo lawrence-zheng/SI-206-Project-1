@@ -13,6 +13,7 @@ def getData(file):
 	output = []
 
 	headings = input_file.readline().split(",")
+
 	num_columns = len(headings)
 	line = input_file.readline()
 
@@ -20,7 +21,7 @@ def getData(file):
 		row_dict = {}
 		row = line.split(",")
 		for i in range(num_columns):
-			row_dict[headings[i]] = row[i] 
+			row_dict[headings[i].strip("\n")] = row[i].strip("\n")
 		output.append(row_dict)
 		line = input_file.readline()
 
@@ -56,8 +57,19 @@ def findMonth(a):
 # Find the most common birth month form this data
 # Input: list of dictionaries
 # Output: Return the month (1-12) that had the most births in the data
+	month_dict = {}
+	for row in a:
+		date = row.get("DOB")
+		print("hi " + str(date))
+		# Assumes m/d/y date format
+		month = date.split("/")[0]
 
-	pass
+		if month in month_dict:
+			month_dict[month] += 1
+		else:
+			month_dict[month] = 1
+
+	return max(month_dict, key=month.dict.get())
 
 def mySortPrint(a,col,fileName):
 #Similar to mySort, but instead of returning single
