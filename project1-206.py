@@ -25,6 +25,7 @@ def getData(file):
 		output.append(row_dict)
 		line = input_file.readline()
 
+	input_file.close()
 	return output
 
 
@@ -69,7 +70,7 @@ def findMonth(a):
 			month_dict[month] = 1
 
 	return int(max(month_dict, key=month_dict.get))
-	
+
 
 def mySortPrint(a,col,fileName):
 #Similar to mySort, but instead of returning single
@@ -77,8 +78,19 @@ def mySortPrint(a,col,fileName):
 # as fist,last,email
 #Input: list of dictionaries, col (key) to sort by and output file name
 #Output: No return value, but the file is written
+	sorted_list = sorted(a, key=lambda k: k[col])
+	file = open(fileName, "w", newline="")
 
-	pass
+	for row in sorted_list:
+		file.write(row.get("First"))
+		file.write(",")
+		file.write(row.get("Last"))
+		file.write(",")
+		file.write(row.get("Email"))
+		file.write("\n")
+
+	file.close()
+
 
 def findAge(a):
 # def findAge(a):
@@ -86,7 +98,7 @@ def findAge(a):
 # Output: Return the average age of the students and round that age to the nearest
 # integer.  You will need to work with the DOB and the current date to find the current
 # age in years.
-
+	
 	pass
 
 
